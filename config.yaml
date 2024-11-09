@@ -1,0 +1,13 @@
+credentials:
+  usernames:
+    dominic.seon:
+      email: dominic.seon@cheilpengtai.com
+      name: Dominic Seon
+      password: '123' # To be replaced with hashed password
+cookie:
+  expiry_days: 1  # 만료일 이라는데, 재인증 기능 필요없으면 0으로 세팅
+  key: random_signature_key
+  name: random_cookie_name
+settings:
+  theme: "dark"
+#  init_key: random_cookie_name  # 다른 값을 할당
