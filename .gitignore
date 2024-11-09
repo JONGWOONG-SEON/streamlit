@@ -3,3 +3,5 @@
 __pycahe__
 구매내역정보.csv
 /streamlit
+* .pyc
+**/__pycache__/
