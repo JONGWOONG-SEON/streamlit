@@ -20,7 +20,7 @@ import streamlit_authenticator as stauth
 
 
 st.write("# 만나서 반갑습니다. 👋")
-dbtest = st.button("DBTEST", on_click=db.insert)
+# dbtest = st.button("DBTEST", on_click=db.connection_button)
 
 st.markdown(
     """

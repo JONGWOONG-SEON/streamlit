@@ -37,7 +37,7 @@ def get_auth():
 
 def login():
     auth = get_auth()
-    st.session_state.authenticator.login(key="test")
+    st.session_state.authenticator.login(key="login")
 
     if st.session_state['authentication_status'] == False:
         st.error("Username/password is incorrect")
@@ -59,6 +59,9 @@ def run():
         "Sales":[
             st.Page(os.path.join(source_path,"Sales.py"), icon="📈"),
             st.Page(os.path.join(source_path,"Sales_spark.py"), icon=":material/animation:")
+        ],
+        "Datasource":[
+            st.Page(dir_path / "Datasource.py")
         ]
 
     }
