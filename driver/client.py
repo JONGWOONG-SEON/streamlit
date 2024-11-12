@@ -2,37 +2,21 @@ import streamlit as st
 import psycopg2
 from driver.connector import call_db
 from driver.preprocessor import preprocess
+import threading
 
-class database_client:
-    def __init__(self):
-        # self.database = None
-        # self.host = None
-        # self.port = None
-        # self.dbname = None
-        # self.id = None
-        # self.pwd = None
-        # self.schema_data = None
-        self.database = st.selectbox("데이터베이스 선택해주세요"
-        ,("Postgresql","Vertica")
-        )
-        self.host = st.text_input("Host")
-        self.port = st.text_input("Port")
-        self.dbname = st.text_input("dbname")
-        self.id = st.text_input("Id")
-        self.pwd = st.text_input("Password")
-        if st.button("Submit"):
-            if self.database == '' or self.host == '' or self.id == '' or self.pwd == '':
-                return st.text("입력해주세요.")
-            else:
-                cursor = call_db(self.database, self.host, self.dbname, self.id, self.pwd, self.port)
-                # sql = """select schemaname, tablename from pg_tables where schemaname = 'public';"""
-                sql = """select schemaname, tablename from pg_tables;"""
-                data = cursor(sql)
-                cursor.is_connect()
-                self.schema_data = data
+class database_client(call_db):
+    def __init__(self,database,host,dbname,id,pwd,port):
+        self.session = None
+        self.data = None
+        self.call_db = call_db(database,host,dbname,id,pwd,port)
+        self.call_db.is_connect()
+
+    def __call__(self, *args, **kwargs):
+        sql = """select schemaname, tablename from pg_tables;"""
+        self.data = self.call_db.cursor(sql)
 
     def show_schema(self):
-        pre = preprocess(self.schema_data)
+        pre = preprocess(self.data)
         data = pre.return_dict()
         schema = data.keys()
         schema = list(schema)
