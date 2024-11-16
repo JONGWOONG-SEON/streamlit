@@ -9,11 +9,11 @@ class database_client(call_db):
         self.session = None
         self.data = None
         self.call_db = call_db(database,host,dbname,id,pwd,port)
-        self.call_db.is_connect()
+        # self.call_db.is_connect()
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self):
         sql = """select schemaname, tablename from pg_tables;"""
-        self.data = self.call_db.cursor(sql)
+        self.data = self.call_db(sql)
 
     def show_schema(self):
         pre = preprocess(self.data)
@@ -22,6 +22,11 @@ class database_client(call_db):
         schema = list(schema)
         return schema
 
+    def show_table(self,schema):
+        pre = preprocess(self.data)
+        data = pre.return_dict()
+        table = list(data[schema])
+        return table
 
     # @st.dialog("Database")
     # def __call__(self):

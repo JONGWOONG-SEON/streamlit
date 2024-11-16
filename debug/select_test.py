@@ -19,7 +19,7 @@ def main():
         else:
             data_dict[key] = [value]
 
-    data_dict = list(data_dict.keys())
+    data_dict = list(data_dict['public'])
     print(f"data_dict{data_dict}")
 
 if __name__ == '__main__':

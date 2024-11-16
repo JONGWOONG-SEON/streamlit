@@ -6,12 +6,12 @@ class call_db:
     def __init__(self, database ,host, dbname, id, pwd, port):
         self.fetch = None
         if database == 'Postgresql':
-            self.__connection = psycopg2.connect(host=host
+            self.connection = psycopg2.connect(host=host
                                               , dbname=dbname
                                               , user=id
                                               , password=pwd
                                               , port=port)
-            self.cursor = self.__connection.cursor()
+            self.cursor = self.connection.cursor()
             st.session_state['database_connection'] = True
 
     def __call__(self,sql):
@@ -20,4 +20,4 @@ class call_db:
         return self.fetch
 
     def is_connect(self):
-        return st.success("DB connect"), st.rerun()
+        return st.success("DB connect") , st.rerun
