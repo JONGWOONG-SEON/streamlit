@@ -22,5 +22,7 @@ def main():
     data_dict = list(data_dict['public'])
     print(f"data_dict{data_dict}")
 
+    data = ({'data':'data'})
+    print(data['data'])
 if __name__ == '__main__':
     main()

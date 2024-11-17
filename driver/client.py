@@ -9,7 +9,7 @@ class database_client(call_db):
         self.session = None
         self.data = None
         self.call_db = call_db(database,host,dbname,id,pwd,port)
-        # self.call_db.is_connect()
+        self.call_db.is_connect()
 
     def __call__(self):
         sql = """select schemaname, tablename from pg_tables;"""

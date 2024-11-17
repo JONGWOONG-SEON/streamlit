@@ -20,4 +20,5 @@ class call_db:
         return self.fetch
 
     def is_connect(self):
-        return st.success("DB connect") , st.rerun
+        # return st.success("DB connect"),st.rerun()
+        return st.success("DB connection")
