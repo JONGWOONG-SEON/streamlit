@@ -18,16 +18,20 @@ import streamlit as st
 import driver.client as db
 import streamlit_authenticator as stauth
 
+if st.session_state["logout"] != True:
+    st.write("# 만나서 반갑습니다. 👋")
+    # dbtest = st.button("DBTEST", on_click=db.connection_button)
 
-st.write("# 만나서 반갑습니다. 👋")
-# dbtest = st.button("DBTEST", on_click=db.connection_button)
-
-st.markdown(
+    st.markdown(
+        """
+        안녕하세요. 검증용 BI 웹서비스입니다.
+        문의사항이 있으시면 dominic.seon@cheilpengtai.com 으로 연락바랍니다.
+        
     """
-    안녕하세요. 검증용 BI 웹서비스입니다.
-    문의사항이 있으시면 dominic.seon@cheilpengtai.com 으로 연락바랍니다.
-    
-"""
-)
-st.page_link("http://www.google.com", label="Google", icon="🌎")
-st.page_link("http://www.naver.com", label="Naver")
+    )
+    st.page_link("http://www.google.com", label="Google", icon="🌎")
+    st.page_link("http://www.naver.com", label="Naver")
+elif st.session_state["logout"]:
+    st.session_state.authenticator.logout('test', 'unrendered')
+    del st.session_state["logout"]
+    st.rerun()

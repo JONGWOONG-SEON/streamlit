@@ -7,5 +7,10 @@ from multiprocessing import Process
 import requests
 import webbrowser
 
-st.session_state.authenticator.logout('test', 'unrendered')
-webbrowser.open('http://localhost:8501', new= 0,autoraise=False)
+if 'authentication_status' in st.session_state:
+    st.session_state['logout'] = True
+    st.switch_page("Home.py")
+
+
+    # st.session_state.authenticator.logout('test', 'unrendered', switch_page())
+    # webbrowser.open('http://localhost:8501', new= 0,autoraise=False)
