@@ -1,7 +1,7 @@
 import psycopg2
 import streamlit as st
 from driver.preprocessor import preprocess
-from sqlalchemy import engine
+# from sqlalchemy import engine
 
 class call_db:
     def __init__(self, database ,host, dbname, id, pwd, port):
