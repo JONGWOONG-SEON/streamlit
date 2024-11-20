@@ -18,13 +18,12 @@ import streamlit as st
 import streamlit_authenticator as stauth
 import yaml
 import time
-
-
+# ttt
 dir_path = Path(__file__).parent
 source_path = os.path.join(os.getcwd(),'source')
 
 def get_auth():
-    with open('config.yaml') as file:
+    with open('config.yaml', encoding='UTF-8') as file:
         config = yaml.load(file, Loader=stauth.SafeLoader)
 
     st.session_state.authenticator = stauth.Authenticate(
